@@ -110,13 +110,48 @@ main{
 
 .search_btn-container{
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     border: solid 1px #D04F4F;
     padding: 1rem 0;
 }
 
 .search-btn{
+    color: white;
+    align-items: center;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap:0.5rem;
     height: 69px;
+    padding: 0 0.5rem;
+}
+
+.search-btn input{
+    color: white;
+    border:none;
+    background: transparent; 
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0em;
+    width: 10rem;
+}
+
+.search-btn input:focus{
+    outline: none;
+}
+
+.search-btn input::placeholder{
+    color: white;
+}
+
+.filter-btn{
+    background: transparent;
+    border: none;
+    color:white;
+    font-size: 1.5rem;
 }
 
 .btn-ingredient{
@@ -129,6 +164,50 @@ main{
 .btn-ustensil{
     background: #ED6454;
 }
+
+/* Section */
+
+#recipes{
+    display:flex;
+    width: 380px;
+    height: 364px;
+}
+
+.card-container{
+    display:flex;
+    flex-direction: column;
+   
+}
+
+.card_image-container{
+  background: #C7BEBE;
+  height: 11rem;
+}
+
+.card_items-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card_items-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_items-recipe{
+    display: flex;
+}
+
+.recipes_ingredients-list{
+    width: 50%;
+}
+
+.recipe_description{
+    width: 50%;
+}
+
+
 
 
 
