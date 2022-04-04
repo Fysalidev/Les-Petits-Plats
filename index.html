@@ -1,12 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/2d00da5fd1.js" crossorigin="anonymous"></script>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Lato&display=swap"
+        rel="stylesheet">
+    <!-- Css -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Les petits plats</title>
 </head>
+
 <body>
-    
+    <div class="bloc_page">
+        <header>
+            <svg width="52" height="47" viewBox="0 0 52 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M39.5082 25.3424V35.1415H12.4023V25.3424C7.99762 25.3424 4.60939 21.9635 4.60939 17.5708C4.60939 13.1781 7.99762 9.79908 12.4023 9.79908C15.4517 9.79908 18.1623 11.4886 19.5176 14.1918L22.9059 12.5023C21.8894 10.8128 20.8729 9.12328 19.1788 8.10958C20.5341 5.74429 22.9059 4.05479 25.9553 4.05479C30.36 4.05479 33.7482 7.43378 33.7482 11.8265C33.7482 13.1781 33.4094 14.5297 32.7317 15.8813L36.12 17.9087C37.1365 16.2192 37.8141 14.1918 37.8141 11.8265C37.8141 11.1507 37.8141 10.8128 37.8141 10.137C38.4918 9.79908 39.1694 9.79908 39.847 9.79908C44.2518 9.79908 47.64 13.1781 47.64 17.5708C47.64 21.9635 43.9129 25.3424 39.5082 25.3424ZM39.5082 42.9132H12.4023V39.1963H39.5082V42.9132ZM39.5082 6.08219C38.4918 6.08219 37.4753 6.42009 36.12 6.42009C34.087 2.70319 30.36 0 25.9553 0C21.5506 0 17.4847 2.36529 15.7906 6.42009C14.7741 6.08219 13.7576 6.08219 12.4023 6.08219C5.96468 6.08219 0.882324 11.1507 0.882324 17.5708C0.882324 22.6393 4.27056 27.0319 8.67527 28.3835V46.2922H43.5741V28.7214C47.9788 27.0319 51.3671 22.9772 51.3671 17.9087C51.3671 11.4886 45.9459 6.08219 39.5082 6.08219ZM22.2282 31.0867H18.5012V23.653H22.2282V31.0867ZM33.7482 31.0867H30.0212V23.653H33.7482V31.0867Z"
+                    fill="#D04F4F" />
+            </svg>
+            <h1>Les petits plats</h1>
+        </header>
+        <main>
+            <div class="search_bar-container">
+                <input type="text" placeholder="Rechercher une recette">
+                <div class="searchbar_image-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="tag-container">
+                <div class="tag tag-ingredient">
+                    <div class="tag-wording">
+                        <span class="wording">Tag Ingredients</span>
+                    </div>
+                    <div class="close-tag">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </div>
+                </div>
+                <div class="tag tag-appliance">
+                    <div class="tag-wording">
+                        <span class="wording">Tag Appareils</span>
+                    </div>
+                    <div class="close-tag">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </div>
+                </div>
+                <div class="tag tag-ustensil">
+                    <div class="tag-wording">
+                        <span class="wording">Tag Ustensiles</span>
+                    </div>
+                    <div class="close-tag">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </div>
+                </div> 
+            </div>
+            <div class="search_btn-container">
+                <div class="search-btn btn-ingredient">
+                    <input type="text" placeholder="Ingredients">
+                    <button><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+                <div class="search-btn btn-appliance" >
+                    <input type="text"placeholder="Appareils">
+                    <button><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+                <div class="search-btn btn-ustensil">
+                    <input type="text" placeholder="Ustensiles">
+                    <button><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </div>
+            <section>
+                <ul>
+                    <li>
+                        <article class="card-container">
+                            <div class="card_image-container">
+                            </div>
+                            <div class="card_items-container">
+                                <div class="card_items-title">
+                                    <h3 class="recipe-title">Titre</h3>
+                                    <p><span>image</span><span class="recipe-duration">60min</span></p>
+                                </div>
+                                <div class="card_items-container">
+                                    <ul class="recipes_ingredients-list">
+                                        <li class=recipe_ingredient">
+                                            <p>
+                                                <span class="ingredient">:</span>
+                                                <span class="quantity"></span>
+                                                <span class="unit"></span>
+                                            </p>
+                                        </li>
+                                        <li class=recipe_ingredient">
+                                            <p>
+                                                <span class="ingredient">:</span>
+                                                <span class="quantity"></span>
+                                                <span class="unit"></span>
+                                            </p>
+                                        </li>
+                                        <li class=recipe_ingredient">
+                                            <p>
+                                                <span class="ingredient">:</span>
+                                                <span class="quantity"></span>
+                                                <span class="unit"></span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <p class="recipe_description">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Id velit quia provident
+                                        voluptates consequuntur tempore fugiat ratione eos a molestiae, harum sed,
+                                        facilis nobis veritatis ullam fugit minus quidem eius? Quam, ullam similique!
+                                        Vel, delectus. Possimus rem quidem quod unde quas quo accusantium distinctio.
+                                        Architecto repellendus dicta quibusdam magni, unde dolorem quisquam rem odit
+                                        facilis illo laborum. Illum nostrum architecto quis fugit itaque voluptates
+                                        omnis vel suscipit modi, necessitatibus vero nulla, nesciunt saepe corporis
+                                        unde. Iure molestiae fuga officia quod aliquid inventore blanditiis amet
+                                        recusandae architecto. Expedita facilis omnis quam nemo repellendus voluptate
+                                        suscipit, minima quasi ex, ratione enim, libero voluptatum fugiat sapiente neque
+                                        deserunt. Ipsam, ut fugit facere pariatur tempore nihil velit doloribus...
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
 </body>
+
 </html>
