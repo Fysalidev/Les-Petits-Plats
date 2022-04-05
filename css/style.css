@@ -73,7 +73,6 @@ main{
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: flex-start;
-    margin-bottom: 1rem;
     padding: 0.5rem 0;
     
 }
@@ -112,7 +111,6 @@ main{
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    border: solid 1px #D04F4F;
     padding: 1rem 0;
 }
 
