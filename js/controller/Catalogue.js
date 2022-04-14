@@ -11,7 +11,7 @@ class Catalogue {
         this.ustensilsWrapper = document.getElementById('ustensils-wrap')
         this.appliancesWrapper = document.getElementById('appliances-wrap')
         this.init()
-        this.filterWithSearchBar()
+        this.filterWithSearchBar();
         this.render()
     }
 
@@ -69,18 +69,24 @@ class Catalogue {
         
         searchBar.addEventListener('keyup', () => {
 
-            const query = searchBar.value
+            const query = searchBar.value.toLowerCase()
             console.log(query)
             console.log(query.length)
 
             if(query.length > 3){
 
                 this.catalogueFiltred = this.catalogue.filter(recipe => {
-                    return recipe.name.toLowerCase().includes(query.toLowerCase())
+                    return (
+                      recipe.name.toLowerCase().includes(query) ||
+                      recipe.description.toLowerCase().includes(query) ||
+                      recipe.ingredients.some((ingredient) =>
+                        ingredient.ingredient.toLowerCase().includes(query)
+                      )
+                    );
                 })
 
             }else{
-                
+
                 this.catalogueFiltred = this.catalogue;
                 
             }
@@ -94,6 +100,7 @@ class Catalogue {
     filterWithTags = () => {}
 
     render = () => {
+        
         this.viewRecipes()
         this.viewIngredients()
         this.viewUstensils()
