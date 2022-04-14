@@ -68,7 +68,7 @@ main{
 
 /* Tags */
 
-.tag-container{
+#tag-container{
     display:flex;
     flex-wrap: wrap;
     gap: 1rem;

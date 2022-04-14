@@ -35,7 +35,7 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
-            <div class="tag-container">
+            <div id="tag-container">
                 <div class="tag tag-ingredient">
                     <div class="tag-wording">
                         <span class="wording">Tag Ingredients</span>
@@ -71,19 +71,19 @@
                     </div>
                 <li>
                 <li>
-                    <div class="search-btn btn-ingredient">
-                        <input type="text" placeholder="Ingredients">
-                        <button class="filter-btn"><i class="fa-solid fa-chevron-down"></i></button>
-                    </div>
-                    <div id="ustensils-wrap">
-                    </div>
-                <li>
-                <li>
-                    <div class="search-btn btn-ingredient">
-                        <input type="text" placeholder="Ingredients">
+                    <div class="search-btn btn-appliance">
+                        <input type="text" placeholder="Appareils">
                         <button class="filter-btn"><i class="fa-solid fa-chevron-down"></i></button>
                     </div>
                     <div id="appliances-wrap">
+                    </div>
+                <li>
+                <li>
+                    <div class="search-btn btn-ustensil">
+                        <input type="text" placeholder="Ustensiles">
+                        <button class="filter-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                    <div id="ustensils-wrap">
                     </div>
                 <li>
             </ul>
@@ -366,13 +366,16 @@
 
 <!-- Data -->
 <script src="js/data/recipes.js"></script>
+
+<!-- Component -->
+<script src="js/component/Tag.js"></script>
 <!-- Utils -->
 <script src="js/utils/filterBtn.js"></script>
 <!-- Controller -->
 <script src="js/controller/Catalogue.js"></script>
 <!-- Template-->
-<script src="js/template/Card.js"></script>
-<script src="js/template/FilterList.js"></script>
+<script src="js/template/Recipe.js"></script>
+<script src="js/template/TagList.js"></script>
 <!-- page -->
 <script src="js/page/index.js"></script>
 </body>
