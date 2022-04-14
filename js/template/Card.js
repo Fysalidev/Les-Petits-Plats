@@ -27,7 +27,7 @@ class Card {
               </div>
               <div class="card_items-recipe">
                   <ul class="recipes_ingredients-list">
-      `;
+      `
 
     return html;
   }

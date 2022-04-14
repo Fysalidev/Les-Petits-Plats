@@ -1,7 +1,8 @@
 class Catalogue {
     
     constructor(data){
-        this.recipes = data
+        this.catalogue = data
+        this.catalogueFiltred = data
         this.ingredients
         this.ustensils
         this.appliances
@@ -10,6 +11,7 @@ class Catalogue {
         this.ustensilsWrapper = document.getElementById('ustensils-wrap')
         this.appliancesWrapper = document.getElementById('appliances-wrap')
         this.init()
+        this.filterWithSearchBar()
         this.render()
     }
 
@@ -21,7 +23,7 @@ class Catalogue {
         const appliancesData = new Array()
         
 
-        this.recipes.forEach(recipe =>{
+        this.catalogue.forEach(recipe =>{
             ingredientsData.push(...recipe.ingredients)
             ustensilsData.push(... recipe.ustensils)
             appliancesData.push(recipe.appliance)   
@@ -42,7 +44,7 @@ class Catalogue {
 
         this.cardWrapper.innerHTML = ''
 
-        this.recipes.forEach(recipe => {
+        this.catalogueFiltred.forEach(recipe => {
             new Card(recipe).render()
         })
     }
@@ -62,10 +64,40 @@ class Catalogue {
         new FilterList(this.appliances, this.appliancesWrapper).render()
     }
 
+    filterWithSearchBar = () => {
+        const searchBar = document.getElementById('search-bar')
+        
+        searchBar.addEventListener('keyup', () => {
+
+            const query = searchBar.value
+            console.log(query)
+            console.log(query.length)
+
+            if(query.length > 3){
+
+                this.catalogueFiltred = this.catalogue.filter(recipe => {
+                    return recipe.name.toLowerCase().includes(query.toLowerCase())
+                })
+
+            }else{
+                
+                this.catalogueFiltred = this.catalogue;
+                
+            }
+
+            console.log(this.catalogueFiltred)
+            this.render()
+
+        })
+    }
+    
+    filterWithTags = () => {}
+
     render = () => {
         this.viewRecipes()
         this.viewIngredients()
         this.viewUstensils()
         this.viewAppliances()
     }
+
 }
