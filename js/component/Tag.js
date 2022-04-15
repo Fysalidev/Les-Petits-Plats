@@ -1,10 +1,12 @@
 class Tag {
-    constructor(Catalogue, name){
-        this.catalogue = Catalogue
+    constructor(name, type){
         this.name = name
+        this.type = type
     }
 
     render(){
+        
+        /* HTML - TagCloseBtn */
 
         const $wrapper = document.getElementById('tag-container');
 
@@ -12,7 +14,7 @@ class Tag {
         const $divWording = document.createElement('div')
         const $divCloseTag = document.createElement('div')
 
-        $tagWrapper.classList.add('tag', 'tag-ingredient');
+        $tagWrapper.classList.add('tag',`tag-${this.type}`);
         $divWording.classList.add("tag-wordin");
         $divCloseTag.classList.add("tag-wording");
 
@@ -23,12 +25,15 @@ class Tag {
         $tagWrapper.appendChild($divCloseTag)
         $wrapper.appendChild($tagWrapper)
 
+        /* EVENT - closeTagBtn */
+
         $divCloseTag.addEventListener('click',(e) => {
-            
-            const index = this.catalogue.tags.indexOf(this.name)
-            this.catalogue.tags.splice(this.catalogue.tags.indexOf(this.name),1)
-            console.log(this.catalogue.tags)
+            catalogue.ingredientsTags.splice(catalogue.ingredientsTags.indexOf(this.name),1)
+            catalogue.ingredients.push(this.name)
+            catalogue.buildIngredientsList()
             e.target.parentElement.parentElement.remove()
+            console.log(catalogue.ingredients)
+            console.log(catalogue.ingredientsTags)
         })
     }
 }

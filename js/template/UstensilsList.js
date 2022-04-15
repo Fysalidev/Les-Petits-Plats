@@ -24,7 +24,7 @@ class TagList {
 
         catalogue.ingredientsTags.push(query)
         catalogue.ingredients.splice(catalogue.ingredients.indexOf(query), 1)
-        catalogue.buildTagLists();
+        catalogue.updateTagLists();
         new Tag(query, this.type).render()
       });
 
