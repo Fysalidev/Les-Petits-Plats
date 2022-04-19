@@ -30,10 +30,10 @@ class Tag {
         $divCloseTag.addEventListener('click',(e) => {
             catalogue.ingredientsTags.splice(catalogue.ingredientsTags.indexOf(this.name),1)
             catalogue.ingredients.push(this.name)
+            catalogue.ingredients.sort()
             catalogue.buildIngredientsList()
             e.target.parentElement.parentElement.remove()
-            console.log(catalogue.ingredients)
-            console.log(catalogue.ingredientsTags)
         })
+
     }
 }

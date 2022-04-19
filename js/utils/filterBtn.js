@@ -1,5 +1,5 @@
 const filterBtns = document.querySelectorAll('.filter-btn')
-console.log(filterBtns)
+
 
 filterBtns.forEach(filterBtn => {
     filterBtn.addEventListener('click', (e) => {

@@ -2,26 +2,28 @@ class Catalogue {
   constructor(data) {
     this.catalogue = data;
     this.catalogueFiltred = data;
-    this.ingredients;
-    this.appliances;
-    this.ustensils;
+    this.ingredients = new Array();
+    this.appliances = new Array();
+    this.ustensils = new Array();
     this.ingredientsTags = [];
     this.appliancesTags = [];
     this.ustensilsTags = [];
-    this.tags = [];
     this.cardWrapper = document.getElementById("recipes");
-    /* this.ingredientsWrapper = document.getElementById("ingredients-wrap"); */
+    this.ingredientsWrapper = document.getElementById("ingredients-wrap");
     this.ustensilsWrapper = document.getElementById("ustensils-wrap");
     this.appliancesWrapper = document.getElementById("appliances-wrap");
-    this.init();
+    /* this.init() */
     this.filterWithSearchBar();
     this.render();
   }
 
-  init = () => {
+  updateIngredients() {
+    const $wrapper = document.getElementById("ingredients-wrap");
+    $wrapper.innerHTML = "";
+
     this.ingredients = Array.from(
       new Set(
-        recipes
+        this.catalogueFiltred
           .map((recipe) =>
             recipe.ingredients.map((recipe) => recipe.ingredient)
           )
@@ -30,19 +32,44 @@ class Catalogue {
       )
     );
 
+    $wrapper.appendChild(new FilterBtn(this.ingredients, 'ingredient').render())
+  }
+
+  updadateAppliances() {
+    const $wrapper = document.getElementById("appliances-wrap");
+    $wrapper.innerHTML = "";
+
+    this.appliances = Array.from(
+      new Set(this.catalogueFiltred.map((recipe) => recipe.appliance).sort())
+    );
+
+    $wrapper.appendChild(new FilterBtn(this.appliances, 'appliance').render())
+  }
+
+  updateUstensils() {
+
+    const $wrapper = document.getElementById("ustensils-wrap");
+    $wrapper.innerHTML = "";
+
     this.ustensils = Array.from(
       new Set(
-        recipes
+        this.catalogueFiltred
           .map((recipe) => recipe.ustensils)
           .reduce((prev, curr) => prev.concat(curr))
           .sort()
       )
     );
 
-    this.appliances = Array.from(
-      new Set(recipes.map((recipe) => recipe.appliance).sort())
-    );
-  };
+    $wrapper.appendChild(new FilterBtn(this.ustensils, 'ustensil').render())
+
+  }
+
+
+  /* init = () => {
+    this.updateIngredients();
+    this.updadateAppliances();
+    this.updateUstensils();
+  }; */
 
   filterWithSearchBar = () => {
     const searchBar = document.getElementById("search-bar");
@@ -67,8 +94,38 @@ class Catalogue {
     });
   };
 
+  filterWithIngredientTag = (tag) => {
+    this.catalogueFiltred = this.catalogueFiltred.filter((recipe) => {
+      return recipe.ingredients.some((ingredient) =>
+        ingredient.ingredient.toLowerCase().includes(tag)
+      );
+    });
+
+    
+    this.render()
+  };
+
+  filterWithApplianceTag = (tag) => {
+    this.catalogueFiltred = this.catalogueFiltred.filter((recipes) =>
+      recipes.appliance.toLowerCase().includes(tag)
+    );
+    this.updadateAppliances()
+    this.render()
+  };
+
+  filterWithUstensilTag = (tag) => {
+    this.catalogueFiltred = this.catalogueFiltred.filter((recipe) => {
+      return recipe.ustensils.some((ustensil) =>
+        ustensil.toLowerCase().includes(tag)
+      );
+    });
+    this.updateUstensils()
+    this.render()
+  };
+
   buildIngredientsList = () => {
-    new IngredientsList(this.ingredients)
+    console.log();
+    new IngredientsList(this.ingredients);
   };
 
   buildAppliancesList = () => {};
@@ -76,12 +133,11 @@ class Catalogue {
   buildUstensilsList = () => {};
 
   buildTagsLists = () => {
-
     /* this.ingredientsWrapper.innerHTML = ""; */
     this.ustensilsWrapper.innerHTML = "";
     this.appliancesWrapper.innerHTML = "";
 
-    this.buildIngredientsList()
+    this.buildIngredientsList();
 
     new TagList(
       this.appliances,
@@ -89,6 +145,7 @@ class Catalogue {
       this.appliancesTags,
       "appliance"
     ).render();
+
     new TagList(
       this.ustensils,
       this.ustensilsWrapper,
@@ -97,16 +154,15 @@ class Catalogue {
     ).render();
   };
 
-  displayRecipes = () => {
-    this.cardWrapper.innerHTML = "";
+  render = () => {
 
+    this.updateIngredients();
+    this.updadateAppliances();
+    this.updateUstensils();
+
+    this.cardWrapper.innerHTML = "";
     this.catalogueFiltred.forEach((recipe) => {
       new Recipe(recipe).render();
     });
-  };
-
-  render = () => {
-    this.buildTagsLists();
-    this.displayRecipes();
   };
 }
