@@ -109,7 +109,7 @@ class Catalogue {
     this.catalogueFiltred = this.catalogueFiltred.filter((recipes) =>
       recipes.appliance.toLowerCase().includes(tag)
     );
-    this.updadateAppliances()
+    /* this.updadateAppliances() */
     this.render()
   };
 
@@ -119,39 +119,8 @@ class Catalogue {
         ustensil.toLowerCase().includes(tag)
       );
     });
-    this.updateUstensils()
+    /* this.updateUstensils() */
     this.render()
-  };
-
-  buildIngredientsList = () => {
-    console.log();
-    new IngredientsList(this.ingredients);
-  };
-
-  buildAppliancesList = () => {};
-
-  buildUstensilsList = () => {};
-
-  buildTagsLists = () => {
-    /* this.ingredientsWrapper.innerHTML = ""; */
-    this.ustensilsWrapper.innerHTML = "";
-    this.appliancesWrapper.innerHTML = "";
-
-    this.buildIngredientsList();
-
-    new TagList(
-      this.appliances,
-      this.appliancesWrapper,
-      this.appliancesTags,
-      "appliance"
-    ).render();
-
-    new TagList(
-      this.ustensils,
-      this.ustensilsWrapper,
-      this.ustensilsTags,
-      "ustensil"
-    ).render();
   };
 
   render = () => {
