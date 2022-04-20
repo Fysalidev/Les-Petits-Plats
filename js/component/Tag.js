@@ -36,7 +36,7 @@ class Tag {
             catalogue.ingredientsTags.indexOf(this.name),
             1
           );
-          catalogue.filterWithIngredientTag();
+          /* catalogue.filterWithIngredientTag(); */
           break;
 
         case "appliance":
@@ -44,7 +44,7 @@ class Tag {
             catalogue.appliancesTags.indexOf(this.name),
             1
           );
-          catalogue.filterWithApplianceTag();
+          /* catalogue.filterWithApplianceTag(); */
           break;
 
         case "ustensil":
@@ -52,14 +52,17 @@ class Tag {
             catalogue.ustensilsTags.indexOf(this.name),
             1
           );
-          catalogue.filterWithUstensilTag();
+          /* catalogue.filterWithUstensilTag(); */
           break;
 
         default:
           console.log("error : type not found");
           break;
       } // end switch
-      console.log(catalogue.ingredientsTags)
+
+      catalogue.filterWithIngredientTag();
+      catalogue.filterWithApplianceTag();
+      catalogue.filterWithUstensilTag();
       e.target.parentElement.parentElement.remove();
     });
   }

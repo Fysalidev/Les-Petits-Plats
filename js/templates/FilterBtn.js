@@ -23,9 +23,7 @@ class FilterBtn {
         const tag = li.textContent.toLowerCase();
         switch (this.type) {
           case "ingredient":
-            console.log(catalogue.ingredientsTags)
             catalogue.ingredientsTags.push(tag);
-            console.log(catalogue.ingredientsTags)
             catalogue.filterWithIngredientTag();
             break;
 

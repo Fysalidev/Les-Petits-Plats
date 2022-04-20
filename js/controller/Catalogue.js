@@ -12,7 +12,6 @@ class Catalogue {
     this.filterWithSearchBar();
     this.render();
   }
-
   /* Filtrer avec la searchBar */
   filterWithSearchBar = () => {
     const searchBar = document.getElementById("search-bar");
@@ -39,7 +38,6 @@ class Catalogue {
   };
   /* Mise à jour de la liste d'ingrédients */
   updateIngredients() {
-    
     const $wrapper = document.getElementById("ingredients-wrap");
     $wrapper.innerHTML = "";
 
@@ -87,45 +85,42 @@ class Catalogue {
   }
   /* Filter les tags ingrédients */
   filterWithIngredientTag = () => {
-
-    this.ingredientsTags.map(tag =>{
-      
-      this.catalogueFiltred = this.catalogueFiltred.filter((recipe) => {
-        return recipe.ingredients.some((ingredient) =>
-          ingredient.ingredient.toLowerCase().includes(tag)
-        );
-      });
-    } )
-    this.render();
+    if(this.ingredientsTags.length > 0) {
+      this.ingredientsTags.map(tag =>{
+        this.catalogueFiltred = this.catalogueFiltred.filter((recipe) => {
+          return recipe.ingredients.some((ingredient) =>
+            ingredient.ingredient.toLowerCase().includes(tag)
+          );
+        });
+      })
+      this.render();
+    }
   };
-
   /* Filter les tags appliances */
   filterWithApplianceTag = () => {
-    this.appliances.map(tag =>{
-      this.catalogueFiltred = this.catalogueFiltred.filter((recipe) => {
-        return recipe.appliance.toLowerCase().includes(tag);
-      });
-    })
+    if(this.appliancesTags.length > 0) {
+      this.appliancesTags.map(tag =>{
+        this.catalogueFiltred = this.catalogueFiltred.filter((recipe) => {
+          return recipe.appliance.toLowerCase().includes(tag);
+        });
+      } )
+    }
     this.render();
   };
-  /* filterWithApplianceTag = (tag) => {
-    this.catalogueFiltred = this.catalogueFiltred.filter((recipes) =>
-      recipes.appliance.toLowerCase().includes(tag)
-    );
-
-    this.render();
-  }; */
   /* Filter les tags ustensils */
-  filterWithUstensilTag = (tag) => {
-    this.catalogueFiltred = this.catalogueFiltred.filter((recipe) => {
-      return recipe.ustensils.some((ustensil) =>
-        ustensil.toLowerCase().includes(tag)
-      );
-    });
-
+  filterWithUstensilTag = () => {
+    if(this.ustensilsTags.length > 0) {
+      this.ustensilsTags.map(tag =>{
+        this.catalogueFiltred = this.catalogueFiltred.filter((recipe) => {
+          return recipe.ustensils.some((ustensil) =>
+            ustensil.toLowerCase().includes(tag)
+          );
+        });
+      } )
+    }
     this.render();
   };
-
+  /* Render */
   render = () => {
     this.updateIngredients();
     this.updadateAppliances();
