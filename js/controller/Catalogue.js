@@ -8,69 +8,12 @@ class Catalogue {
     this.ingredientsTags = [];
     this.appliancesTags = [];
     this.ustensilsTags = [];
-    this.cardWrapper = document.getElementById("recipes");
-    this.ingredientsWrapper = document.getElementById("ingredients-wrap");
-    this.ustensilsWrapper = document.getElementById("ustensils-wrap");
-    this.appliancesWrapper = document.getElementById("appliances-wrap");
-    /* this.init() */
+    
     this.filterWithSearchBar();
     this.render();
   }
 
-  updateIngredients() {
-    const $wrapper = document.getElementById("ingredients-wrap");
-    $wrapper.innerHTML = "";
-
-    this.ingredients = Array.from(
-      new Set(
-        this.catalogueFiltred
-          .map((recipe) =>
-            recipe.ingredients.map((recipe) => recipe.ingredient)
-          )
-          .reduce((prev, curr) => prev.concat(curr))
-          .sort()
-      )
-    );
-
-    $wrapper.appendChild(new FilterBtn(this.ingredients, 'ingredient').render())
-  }
-
-  updadateAppliances() {
-    const $wrapper = document.getElementById("appliances-wrap");
-    $wrapper.innerHTML = "";
-
-    this.appliances = Array.from(
-      new Set(this.catalogueFiltred.map((recipe) => recipe.appliance).sort())
-    );
-
-    $wrapper.appendChild(new FilterBtn(this.appliances, 'appliance').render())
-  }
-
-  updateUstensils() {
-
-    const $wrapper = document.getElementById("ustensils-wrap");
-    $wrapper.innerHTML = "";
-
-    this.ustensils = Array.from(
-      new Set(
-        this.catalogueFiltred
-          .map((recipe) => recipe.ustensils)
-          .reduce((prev, curr) => prev.concat(curr))
-          .sort()
-      )
-    );
-
-    $wrapper.appendChild(new FilterBtn(this.ustensils, 'ustensil').render())
-
-  }
-
-
-  /* init = () => {
-    this.updateIngredients();
-    this.updadateAppliances();
-    this.updateUstensils();
-  }; */
-
+  /* Filtrer avec la searchBar */
   filterWithSearchBar = () => {
     const searchBar = document.getElementById("search-bar");
 
@@ -90,10 +33,58 @@ class Catalogue {
       } else {
         this.catalogueFiltred = this.catalogue;
       }
+
       this.render();
     });
   };
+  /* Mise à jour de la liste d'ingrédients */
+  updateIngredients() {
+    const $wrapper = document.getElementById("ingredients-wrap");
+    $wrapper.innerHTML = "";
 
+    this.ingredients = Array.from(
+      new Set(
+        this.catalogueFiltred
+          .map((recipe) =>
+            recipe.ingredients.map((recipe) => recipe.ingredient)
+          )
+          .reduce((prev, curr) => prev.concat(curr))
+          .sort()
+      )
+    );
+
+    $wrapper.appendChild(
+      new FilterBtn(this.ingredients, "ingredient").render()
+    );
+  }
+  /* Mise à jour de la liste d'appliances */
+  updadateAppliances() {
+    const $wrapper = document.getElementById("appliances-wrap");
+    $wrapper.innerHTML = "";
+
+    this.appliances = Array.from(
+      new Set(this.catalogueFiltred.map((recipe) => recipe.appliance).sort())
+    );
+
+    $wrapper.appendChild(new FilterBtn(this.appliances, "appliance").render());
+  }
+  /* Mise à jour de la liste d'ustensils */
+  updateUstensils() {
+    const $wrapper = document.getElementById("ustensils-wrap");
+    $wrapper.innerHTML = "";
+
+    this.ustensils = Array.from(
+      new Set(
+        this.catalogueFiltred
+          .map((recipe) => recipe.ustensils)
+          .reduce((prev, curr) => prev.concat(curr))
+          .sort()
+      )
+    );
+
+    $wrapper.appendChild(new FilterBtn(this.ustensils, "ustensil").render());
+  }
+  /* Filter les tags ingrédients */
   filterWithIngredientTag = (tag) => {
     this.catalogueFiltred = this.catalogueFiltred.filter((recipe) => {
       return recipe.ingredients.some((ingredient) =>
@@ -101,35 +92,35 @@ class Catalogue {
       );
     });
 
-    
-    this.render()
+    this.render();
   };
-
+  /* Filter les tags appliances */
   filterWithApplianceTag = (tag) => {
     this.catalogueFiltred = this.catalogueFiltred.filter((recipes) =>
       recipes.appliance.toLowerCase().includes(tag)
     );
-    /* this.updadateAppliances() */
-    this.render()
-  };
 
+    this.render();
+  };
+  /* Filter les tags ustensils */
   filterWithUstensilTag = (tag) => {
     this.catalogueFiltred = this.catalogueFiltred.filter((recipe) => {
       return recipe.ustensils.some((ustensil) =>
         ustensil.toLowerCase().includes(tag)
       );
     });
-    /* this.updateUstensils() */
-    this.render()
+
+    this.render();
   };
 
   render = () => {
-
     this.updateIngredients();
     this.updadateAppliances();
     this.updateUstensils();
 
-    this.cardWrapper.innerHTML = "";
+
+    const recipesWrapper = document.getElementById("recipes");
+    recipesWrapper.innerHTML = "";
     this.catalogueFiltred.forEach((recipe) => {
       new Recipe(recipe).render();
     });

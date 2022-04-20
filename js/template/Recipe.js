@@ -2,8 +2,8 @@ class Recipe {
   constructor(data) {
     this.id = data.id;
     this.name = data.name;
-    this.ingredients = data.ingredients;
     this.time = data.time;
+    this.ingredients = data.ingredients;
     this.description = data.description;
     this.cardWrapper = document.getElementById("recipes")
   }
