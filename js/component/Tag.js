@@ -27,9 +27,10 @@ class Tag {
     /* EVENT - closeTagBtn */
 
     $divCloseTag.addEventListener("click", (e) => {
-        console.log(this.type)
-        console.log(this.name)
-        console.log(catalogue.ingredientsTags)
+      console.log(this.type);
+      console.log(this.name);
+      console.log(catalogue.ingredientsTags);
+
       switch (this.type) {
         case "ingredient":
           catalogue.ingredientsTags.splice(
@@ -60,9 +61,7 @@ class Tag {
           break;
       } // end switch
 
-      catalogue.filterWithIngredientTag();
-      catalogue.filterWithApplianceTag();
-      catalogue.filterWithUstensilTag();
+      catalogue.tag();
       e.target.parentElement.parentElement.remove();
     });
   }

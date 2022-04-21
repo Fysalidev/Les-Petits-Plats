@@ -5,7 +5,6 @@ class FilterBtn {
   }
 
   render = () => {
-
     /* HTML - FilterBtn */
 
     const ul = document.createElement("ul");
@@ -24,28 +23,25 @@ class FilterBtn {
         switch (this.type) {
           case "ingredient":
             catalogue.ingredientsTags.push(tag);
-            catalogue.filterWithIngredientTag();
             break;
 
           case "appliance":
             catalogue.appliancesTags.push(tag);
-            catalogue.filterWithApplianceTag();
             break;
 
           case "ustensil":
             catalogue.ustensilsTags.push(tag);
-            catalogue.filterWithUstensilTag();
             break;
 
           default:
             console.log("error : type not found");
             break;
         }
+        catalogue.tag();
         new Tag(tag, this.type).render();
       });
     });
 
     return ul;
-
   };
 }
