@@ -28,7 +28,7 @@ class Catalogue {
     $searchBar.addEventListener("keyup", (e) => {
       const query = e.target.value;
       if (e.target.value.length > 2) {
-        this.filter(query);
+        this.filter(query.toLowerCase());
         this.tag();
       } else {
         this.catalogueFiltred = this.catalogue;
