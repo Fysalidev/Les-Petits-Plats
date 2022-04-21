@@ -148,7 +148,14 @@ class Catalogue {
     }
 
     if (this.catalogueTaged.length == 0) {
-      alert("Afficher un message à la place des recettes");
+      const alert = document.createElement("div");
+      const p = document.createElement("p");
+      alert.id = "alert";
+      p.textContent =
+      "« Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes »";
+      alert.appendChild(p)
+      this.$recipes.innerHTML = ""
+      this.$recipes.appendChild(alert)
     } else {
       this.render();
     }
