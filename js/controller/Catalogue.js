@@ -2,12 +2,13 @@ class Catalogue {
   constructor(data) {
     this.catalogue = data;
     this.catalogueFiltred = data;
+    this.catalogueTaged = new Array()
     this.ingredients = new Array();
     this.appliances = new Array();
     this.ustensils = new Array();
-    this.ingredientsTags = [];
-    this.appliancesTags = [];
-    this.ustensilsTags = [];
+    this.ingredientsTags = new Array();
+    this.appliancesTags = new Array();
+    this.ustensilsTags = new Array();
     
     this.filterWithSearchBar();
     this.render();
@@ -29,13 +30,17 @@ class Catalogue {
             )
           );
         });
+
       } else {
         this.catalogueFiltred = this.catalogue;
       }
-
-      this.render();
+      tag(this.catalogueFiltred);
     });
   };
+
+  tag =() =>{}
+
+
   /* Mise à jour de la liste d'ingrédients */
   updateIngredients() {
     const $wrapper = document.getElementById("ingredients-wrap");
