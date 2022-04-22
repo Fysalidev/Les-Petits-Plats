@@ -16,7 +16,7 @@ class FilterBtn {
       li.innerHTML = data;
       ul.appendChild(li);
 
-      /* EVENT - openTagsBtn */
+      /* EVENT | createTagsBtn */
 
       li.addEventListener("click", (e) => {
         const tag = li.textContent.toLowerCase();
