@@ -32,12 +32,13 @@ main{
 
 .search_bar-container{
     align-items: center;
+    background-color:#E7E7E7;
     border-radius: 5px;
     display: flex;
+    font-family: 'Lato', sans-serif;
     height: 69px;
     justify-content: center;
-    background-color:#E7E7E7;
-    margin-bottom: 1rem;   
+    margin-bottom: 1rem;  
 }
 
 .search_bar-container input{
@@ -112,6 +113,7 @@ main{
     flex-wrap: wrap;
     gap: 1rem;
     padding: 1rem 0;
+    color: white;
 }
 
 .search-btn{
@@ -161,6 +163,14 @@ main{
 }
 .btn-ustensil{
     background: #ED6454;
+}
+
+.list-hidden{
+    display: none;
+}
+
+.list-show{
+    display: block
 }
 
 /* Section */
@@ -228,6 +238,24 @@ main{
 }
 
 .ingredient{
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.appliance{
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.ustensil{
     font-family: 'Lato', sans-serif;
     font-size: 12px;
     font-weight: bold;

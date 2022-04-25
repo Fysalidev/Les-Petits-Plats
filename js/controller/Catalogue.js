@@ -4,6 +4,10 @@ class Catalogue {
     this.$ingredients = document.getElementById("ingredients-wrap");
     this.$appliances = document.getElementById("appliances-wrap");
     this.$ustensils = document.getElementById("ustensils-wrap");
+    this.$tagsFilterBtn = document.querySelectorAll(".search-btn");
+    this.$ingredientSearchInput = document.getElementById("ingredient-filter-btn");
+    this.$applianceSearchInput = document.getElementById("appliance-filter-btn");
+    this.$ustensilSearchInput = document.getElementById("ustensil-filter-btn");
     this.catalogue = data;
     this.catalogueFiltred = data;
     this.catalogueTaged = new Array();
@@ -19,10 +23,11 @@ class Catalogue {
   /* Init */
   init = () => {
     this.searchBar();
+    this.tagsFilterBtn();
     this.tag();
   };
 
-  /* update searchBar */
+  /* Init searchBar */
   searchBar = () => {
     const $searchBar = document.getElementById("search-bar");
     $searchBar.addEventListener("keyup", (e) => {
@@ -33,6 +38,94 @@ class Catalogue {
       } else {
         this.catalogueFiltred = this.catalogue;
         this.tag(this.catalogueFiltred);
+      }
+    });
+  };
+
+  /* Init tagsFilterBtn */
+
+  toggleBtn = (elemBtn) => {
+    if (elemBtn.className === "fa-solid fa-chevron-down") {
+          elemBtn.classList.replace("fa-chevron-down", "fa-chevron-up");
+          elemBtn.parentNode.parentNode.nextElementSibling.classList.replace(
+            "list-hidden",
+            "list-show"
+          );
+        } else {
+          elemBtn.classList.replace("fa-chevron-up", "fa-chevron-down");
+          elemBtn.parentNode.parentNode.nextElementSibling.classList.replace(
+            "list-show",
+            "list-hidden"
+          );
+        }
+  }
+
+  /* Arrow Btn */
+  tagsFilterBtn = () => {
+    this.$tagsFilterBtn.forEach((tagsFilterBtn) => {
+      const arrowBtn = tagsFilterBtn.lastElementChild.firstChild;
+      arrowBtn.addEventListener("click", (e) => {
+        this.toggleBtn(e.target);
+      });
+    });
+
+    /* SearchInput ingredient */
+
+    this.$ingredientSearchInput.addEventListener("keyup", (e) => {
+      if (e.target.value.length > 0) {
+        const ingredientsListFiltred = this.ingredients.filter((items) =>
+          items.toLowerCase().includes(e.target.value.toLowerCase())
+        );
+
+        this.$ingredients.innerHTML = "";
+        this.$ingredients.appendChild(
+          new FilterBtn(ingredientsListFiltred, "ingredient").render()
+        );
+      } else {
+        this.$ingredients.innerHTML = "";
+        this.$ingredients.appendChild(
+          new FilterBtn(this.ingredients, "ingredient").render()
+        );
+      }
+    });
+
+    /* SearchInput appliance */
+
+    this.$applianceSearchInput.addEventListener("keyup", (e) => {
+      if (e.target.value.length > 0) {
+        const appliancesListFiltred = this.appliances.filter((items) =>
+          items.toLowerCase().includes(e.target.value.toLowerCase())
+        );
+
+        this.$appliances.innerHTML = "";
+        this.$appliances.appendChild(
+          new FilterBtn(appliancesListFiltred, "appliance").render()
+        );
+      } else {
+        this.$appliances.innerHTML = "";
+        this.$appliances.appendChild(
+          new FilterBtn(this.appliances, "appliance").render()
+        );
+      }
+    });
+
+    /* SearchInput ustensil */
+
+    this.$ustensilSearchInput.addEventListener("keyup", (e) => {
+      if (e.target.value.length > 0) {
+        const ustensilsListFiltred = this.ustensils.filter((items) =>
+          items.toLowerCase().includes(e.target.value.toLowerCase())
+        );
+
+        this.$ustensils.innerHTML = "";
+        this.$ustensils.appendChild(
+          new FilterBtn(ustensilsListFiltred, "ustensil").render()
+        );
+      } else {
+        this.$ustensils.innerHTML = "";
+        this.$ustensils.appendChild(
+          new FilterBtn(this.ustensils, "ustensil").render()
+        );
       }
     });
   };
@@ -152,10 +245,10 @@ class Catalogue {
       const p = document.createElement("p");
       alert.id = "alert";
       p.textContent =
-      "« Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes »";
-      alert.appendChild(p)
-      this.$recipes.innerHTML = ""
-      this.$recipes.appendChild(alert)
+        "« Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes »";
+      alert.appendChild(p);
+      this.$recipes.innerHTML = "";
+      this.$recipes.appendChild(alert);
     } else {
       this.render();
     }
