@@ -150,7 +150,6 @@ class Catalogue {
 
   /* Filter with tags */
   tag = () => {
-
     this.catalogueTaged = this.catalogueFiltred;
 
     /* Filter with ingredients Tags */
@@ -184,12 +183,15 @@ class Catalogue {
       });
     }
 
-    console.log(this.catalogueTaged)
+    if (
+      this.ingredientsTags.length === 0 &&
+      this.appliancesTags.length === 0 &&
+      this.ustensilsTags.length === 0
+    ) {
+      this.render();
+    }
 
-    if (this.catalogueTaged.length > 0){
-      this.render()
-
-    }else{
+    if (this.catalogueTaged.length === 0) {
       const alert = document.createElement("div");
       const p = document.createElement("p");
       alert.id = "alert";
@@ -198,7 +200,10 @@ class Catalogue {
       alert.appendChild(p);
       this.$recipes.innerHTML = "";
       this.$recipes.appendChild(alert);
+    } else {
+      this.render();
     }
+  };
 
   /* Render */
   render = () => {
