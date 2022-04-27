@@ -60,8 +60,10 @@ class Catalogue {
         }
   }
 
-  /* Arrow Btn */
   tagsFilterBtn = () => {
+
+    /* Arrow Btn */
+
     this.$tagsFilterBtn.forEach((tagsFilterBtn) => {
       const arrowBtn = tagsFilterBtn.lastElementChild.firstChild;
       arrowBtn.addEventListener("click", (e) => {
@@ -69,7 +71,7 @@ class Catalogue {
       });
     });
 
-    /* SearchInput ingredient */
+    /* Filter Ingredient List with InputBtn */
 
     this.$ingredientSearchInput.addEventListener("keyup", (e) => {
       if (e.target.value.length > 0) {
@@ -81,6 +83,7 @@ class Catalogue {
         this.$ingredients.appendChild(
           new FilterBtn(ingredientsListFiltred, "ingredient").render()
         );
+
       } else {
         this.$ingredients.innerHTML = "";
         this.$ingredients.appendChild(
@@ -89,7 +92,7 @@ class Catalogue {
       }
     });
 
-    /* SearchInput appliance */
+    /* Filter Appliance List with InputBtn */
 
     this.$applianceSearchInput.addEventListener("keyup", (e) => {
       if (e.target.value.length > 0) {
@@ -101,6 +104,7 @@ class Catalogue {
         this.$appliances.appendChild(
           new FilterBtn(appliancesListFiltred, "appliance").render()
         );
+
       } else {
         this.$appliances.innerHTML = "";
         this.$appliances.appendChild(
@@ -109,7 +113,7 @@ class Catalogue {
       }
     });
 
-    /* SearchInput ustensil */
+    /* Filter Appliance List with InputBtn */
 
     this.$ustensilSearchInput.addEventListener("keyup", (e) => {
       if (e.target.value.length > 0) {
@@ -121,6 +125,7 @@ class Catalogue {
         this.$ustensils.appendChild(
           new FilterBtn(ustensilsListFiltred, "ustensil").render()
         );
+        
       } else {
         this.$ustensils.innerHTML = "";
         this.$ustensils.appendChild(
@@ -131,6 +136,7 @@ class Catalogue {
   };
 
   /* Update Ingredients */
+
   updateIngredients() {
     this.ingredients = Array.from(
       new Set(
@@ -201,18 +207,13 @@ class Catalogue {
 
   /* Filter with tags */
   tag = () => {
-    if (
-      this.ingredientsTags.length === 0 &&
-      this.appliancesTags.length == 0 &&
-      this.ustensilsTags.length === 0
-    ) {
-      this.catalogueTaged = this.catalogueFiltred;
-    }
+
+    this.catalogueTaged = this.catalogueFiltred;
 
     /* Filter with ingredients Tags */
     if (this.ingredientsTags.length > 0) {
       this.ingredientsTags.map((tag) => {
-        this.catalogueTaged = this.catalogueFiltred.filter((recipe) => {
+        this.catalogueTaged = this.catalogueTaged.filter((recipe) => {
           return recipe.ingredients.some((ingredient) =>
             ingredient.ingredient.toLowerCase().includes(tag)
           );
@@ -223,7 +224,7 @@ class Catalogue {
     /* Filter with appliances Tags */
     if (this.appliancesTags.length > 0) {
       this.appliancesTags.map((tag) => {
-        this.catalogueTaged = this.catalogueFiltred.filter((recipe) => {
+        this.catalogueTaged = this.catalogueTaged.filter((recipe) => {
           return recipe.appliance.toLowerCase().includes(tag);
         });
       });
@@ -232,7 +233,7 @@ class Catalogue {
     /* Filter with ustensils Tags */
     if (this.ustensilsTags.length > 0) {
       this.ustensilsTags.map((tag) => {
-        this.catalogueTaged = this.catalogueFiltred.filter((recipe) => {
+        this.catalogueTaged = this.catalogueTaged.filter((recipe) => {
           return recipe.ustensils.some((ustensil) =>
             ustensil.toLowerCase().includes(tag)
           );
@@ -240,7 +241,15 @@ class Catalogue {
       });
     }
 
-    if (this.catalogueTaged.length == 0) {
+    if (
+      this.ingredientsTags.length === 0 &&
+      this.appliancesTags.length === 0 &&
+      this.ustensilsTags.length === 0
+    ) {
+      this.render();
+    }
+
+    if (this.catalogueTaged.length === 0) {
       const alert = document.createElement("div");
       const p = document.createElement("p");
       alert.id = "alert";
