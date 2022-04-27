@@ -1,4 +1,4 @@
-class Tag {
+class TagBtn {
   constructor(name, type) {
     this.name = name;
     this.type = type;
@@ -24,18 +24,15 @@ class Tag {
     $tagWrapper.appendChild($divCloseTag);
     $wrapper.appendChild($tagWrapper);
 
-    /* EVENT - closeTagBtn */
+    /* EVENT - close TagBtn */
 
     $divCloseTag.addEventListener("click", (e) => {
-     
       switch (this.type) {
         case "ingredient":
           catalogue.ingredientsTags.splice(
             catalogue.ingredientsTags.indexOf(this.name),
             1
           );
-          /* catalogue.tag() */
-          /* catalogue.filterWithIngredientTag(); */
           break;
 
         case "appliance":
@@ -43,8 +40,6 @@ class Tag {
             catalogue.appliancesTags.indexOf(this.name),
             1
           );
-          /* catalogue.tag() */
-          /* catalogue.filterWithApplianceTag(); */
           break;
 
         case "ustensil":
@@ -52,7 +47,6 @@ class Tag {
             catalogue.ustensilsTags.indexOf(this.name),
             1
           );
-          /* catalogue.filterWithUstensilTag(); */
           break;
 
         default:
@@ -60,9 +54,8 @@ class Tag {
           break;
       } // end switch
 
-      catalogue.tag();
       e.target.parentElement.parentElement.remove();
-    
+      catalogue.tag();
     });
   }
 }

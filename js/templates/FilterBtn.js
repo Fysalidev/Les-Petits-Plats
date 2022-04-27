@@ -6,7 +6,6 @@ class FilterBtn {
 
   render = () => {
     /* HTML - FilterBtn */
-
     const ul = document.createElement("ul");
     ul.classList.add(`${this.type}-list`);
 
@@ -16,8 +15,7 @@ class FilterBtn {
       li.innerHTML = data;
       ul.appendChild(li);
 
-      /* EVENT | createTagsBtn */
-
+      /* EVENT | create TagBtn */
       li.addEventListener("click", (e) => {
         const tag = li.textContent.toLowerCase();
         switch (this.type) {
@@ -38,7 +36,7 @@ class FilterBtn {
             break;
         }
         catalogue.tag();
-        new Tag(tag, this.type).render();
+        new TagBtn(tag, this.type).render();
       });
     });
 

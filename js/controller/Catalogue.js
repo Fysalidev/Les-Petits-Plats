@@ -5,8 +5,12 @@ class Catalogue {
     this.$appliances = document.getElementById("appliances-wrap");
     this.$ustensils = document.getElementById("ustensils-wrap");
     this.$tagsFilterBtn = document.querySelectorAll(".search-btn");
-    this.$ingredientSearchInput = document.getElementById("ingredient-filter-btn");
-    this.$applianceSearchInput = document.getElementById("appliance-filter-btn");
+    this.$ingredientSearchInput = document.getElementById(
+      "ingredient-filter-btn"
+    );
+    this.$applianceSearchInput = document.getElementById(
+      "appliance-filter-btn"
+    );
     this.$ustensilSearchInput = document.getElementById("ustensil-filter-btn");
     this.catalogue = data;
     this.catalogueFiltred = data;
@@ -46,22 +50,21 @@ class Catalogue {
 
   toggleBtn = (elemBtn) => {
     if (elemBtn.className === "fa-solid fa-chevron-down") {
-          elemBtn.classList.replace("fa-chevron-down", "fa-chevron-up");
-          elemBtn.parentNode.parentNode.nextElementSibling.classList.replace(
-            "list-hidden",
-            "list-show"
-          );
-        } else {
-          elemBtn.classList.replace("fa-chevron-up", "fa-chevron-down");
-          elemBtn.parentNode.parentNode.nextElementSibling.classList.replace(
-            "list-show",
-            "list-hidden"
-          );
-        }
-  }
+      elemBtn.classList.replace("fa-chevron-down", "fa-chevron-up");
+      elemBtn.parentNode.parentNode.nextElementSibling.classList.replace(
+        "list-hidden",
+        "list-show"
+      );
+    } else {
+      elemBtn.classList.replace("fa-chevron-up", "fa-chevron-down");
+      elemBtn.parentNode.parentNode.nextElementSibling.classList.replace(
+        "list-show",
+        "list-hidden"
+      );
+    }
+  };
 
   tagsFilterBtn = () => {
-
     /* Arrow Btn */
 
     this.$tagsFilterBtn.forEach((tagsFilterBtn) => {
@@ -83,7 +86,6 @@ class Catalogue {
         this.$ingredients.appendChild(
           new FilterBtn(ingredientsListFiltred, "ingredient").render()
         );
-
       } else {
         this.$ingredients.innerHTML = "";
         this.$ingredients.appendChild(
@@ -104,7 +106,6 @@ class Catalogue {
         this.$appliances.appendChild(
           new FilterBtn(appliancesListFiltred, "appliance").render()
         );
-
       } else {
         this.$appliances.innerHTML = "";
         this.$appliances.appendChild(
@@ -125,70 +126,12 @@ class Catalogue {
         this.$ustensils.appendChild(
           new FilterBtn(ustensilsListFiltred, "ustensil").render()
         );
-        
       } else {
         this.$ustensils.innerHTML = "";
         this.$ustensils.appendChild(
           new FilterBtn(this.ustensils, "ustensil").render()
         );
       }
-    });
-  };
-
-  /* Update Ingredients */
-
-  updateIngredients() {
-    this.ingredients = Array.from(
-      new Set(
-        this.catalogueTaged
-          .map((recipe) =>
-            recipe.ingredients.map((recipe) => recipe.ingredient)
-          )
-          .reduce((prev, curr) => prev.concat(curr))
-          .sort()
-      )
-    );
-    this.$ingredients.innerHTML = "";
-    this.$ingredients.appendChild(
-      new FilterBtn(this.ingredients, "ingredient").render()
-    );
-  }
-
-  /* Update Appliances */
-  updadateAppliances() {
-    this.appliances = Array.from(
-      new Set(this.catalogueTaged.map((recipe) => recipe.appliance).sort())
-    );
-
-    this.$appliances.innerHTML = "";
-    this.$appliances.appendChild(
-      new FilterBtn(this.appliances, "appliance").render()
-    );
-  }
-
-  /* Update Ustensils */
-  updateUstensils() {
-    this.ustensils = Array.from(
-      new Set(
-        this.catalogueTaged
-          .map((recipe) => recipe.ustensils)
-          .reduce((prev, curr) => prev.concat(curr))
-          .sort()
-      )
-    );
-
-    this.$ustensils.innerHTML = "";
-    this.$ustensils.appendChild(
-      new FilterBtn(this.ustensils, "ustensil").render()
-    );
-  }
-
-  /* Update recepies */
-  updateRecipes = () => {
-    const recipesWrapper = document.getElementById("recipes");
-    recipesWrapper.innerHTML = "";
-    this.catalogueTaged.forEach((recipe) => {
-      new Recipe(recipe).render();
     });
   };
 
@@ -207,7 +150,6 @@ class Catalogue {
 
   /* Filter with tags */
   tag = () => {
-
     this.catalogueTaged = this.catalogueFiltred;
 
     /* Filter with ingredients Tags */
@@ -265,9 +207,51 @@ class Catalogue {
 
   /* Render */
   render = () => {
-    this.updateIngredients();
-    this.updadateAppliances();
-    this.updateUstensils();
-    this.updateRecipes();
+    /* Update Ingredients */
+    this.ingredients = Array.from(
+      new Set(
+        this.catalogueTaged
+          .map((recipe) =>
+            recipe.ingredients.map((recipe) => recipe.ingredient)
+          )
+          .reduce((prev, curr) => prev.concat(curr))
+          .sort()
+      )
+    );
+    this.$ingredients.innerHTML = "";
+    this.$ingredients.appendChild(
+      new FilterBtn(this.ingredients, "ingredient").render()
+    );
+
+    /* Update Appliances */
+    this.appliances = Array.from(
+      new Set(this.catalogueTaged.map((recipe) => recipe.appliance).sort())
+    );
+
+    this.$appliances.innerHTML = "";
+    this.$appliances.appendChild(
+      new FilterBtn(this.appliances, "appliance").render()
+    );
+
+    /* Update Ustensils */
+    this.ustensils = Array.from(
+      new Set(
+        this.catalogueTaged
+          .map((recipe) => recipe.ustensils)
+          .reduce((prev, curr) => prev.concat(curr))
+          .sort()
+      )
+    );
+
+    this.$ustensils.innerHTML = "";
+    this.$ustensils.appendChild(
+      new FilterBtn(this.ustensils, "ustensil").render()
+    );
+
+    /* Update recepies */
+    this.$recipes.innerHTML = "";
+    this.catalogueTaged.forEach((recipe) => {
+      new Recipe(recipe).render();
+    });
   };
 }
