@@ -23,6 +23,7 @@ class Recipe {
                       <span class="recipe-duration">
                           ${this.time}
                       </span>
+                      <span>min</span>
                   </p>
               </div>
               <div class="card_items-recipe">
