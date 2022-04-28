@@ -69,8 +69,18 @@ class Catalogue {
 
     this.$tagsFilterBtn.forEach((tagsFilterBtn) => {
       const arrowBtn = tagsFilterBtn.lastElementChild.firstChild;
+      const input = tagsFilterBtn.firstElementChild
+      
       arrowBtn.addEventListener("click", (e) => {
         this.toggleBtn(e.target);
+      });
+
+      input.addEventListener("focus", (e) => {
+        /* const list = e.target.parentElement.nextElementSibling */
+        const arrowBtn = e.target.nextElementSibling.firstElementChild
+        /* console.log(list) */
+        /* console.log(arrowBtn) */
+        this.toggleBtn(arrowBtn);
       });
     });
 
@@ -183,15 +193,9 @@ class Catalogue {
       });
     }
 
-    if (
-      this.ingredientsTags.length === 0 &&
-      this.appliancesTags.length === 0 &&
-      this.ustensilsTags.length === 0
-    ) {
-      this.render();
-    }
-
-    if (this.catalogueTaged.length === 0) {
+    if(this.catalogueTaged.length > 0){
+      this.render()
+    }else{
       const alert = document.createElement("div");
       const p = document.createElement("p");
       alert.id = "alert";
@@ -200,8 +204,6 @@ class Catalogue {
       alert.appendChild(p);
       this.$recipes.innerHTML = "";
       this.$recipes.appendChild(alert);
-    } else {
-      this.render();
     }
   };
 
