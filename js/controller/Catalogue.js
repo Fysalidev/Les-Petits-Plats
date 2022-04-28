@@ -48,16 +48,16 @@ class Catalogue {
 
   /* Init tagsFilterBtn */
 
-  toggleBtn = (elemBtn) => {
-    if (elemBtn.className === "fa-solid fa-chevron-down") {
-      elemBtn.classList.replace("fa-chevron-down", "fa-chevron-up");
-      elemBtn.parentNode.parentNode.nextElementSibling.classList.replace(
+  toggleFilterBtn = (btn) => {
+    if (btn.className === "fa-solid fa-chevron-down") {
+      btn.classList.replace("fa-chevron-down", "fa-chevron-up");
+      btn.parentNode.parentNode.nextElementSibling.classList.replace(
         "list-hidden",
         "list-show"
       );
     } else {
-      elemBtn.classList.replace("fa-chevron-up", "fa-chevron-down");
-      elemBtn.parentNode.parentNode.nextElementSibling.classList.replace(
+      btn.classList.replace("fa-chevron-up", "fa-chevron-down");
+      btn.parentNode.parentNode.nextElementSibling.classList.replace(
         "list-show",
         "list-hidden"
       );
@@ -72,15 +72,12 @@ class Catalogue {
       const input = tagsFilterBtn.firstElementChild
       
       arrowBtn.addEventListener("click", (e) => {
-        this.toggleBtn(e.target);
+        this.toggleFilterBtn(e.target);
       });
 
       input.addEventListener("focus", (e) => {
-        /* const list = e.target.parentElement.nextElementSibling */
         const arrowBtn = e.target.nextElementSibling.firstElementChild
-        /* console.log(list) */
-        /* console.log(arrowBtn) */
-        this.toggleBtn(arrowBtn);
+        this.toggleFilterBtn(arrowBtn);
       });
     });
 

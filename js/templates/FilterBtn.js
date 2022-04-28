@@ -18,6 +18,8 @@ class FilterBtn {
       /* EVENT | create TagBtn */
       li.addEventListener("click", (e) => {
         const tag = li.textContent.toLowerCase();
+        const arrowBtn = e.target.parentElement.parentElement.previousElementSibling.lastElementChild.firstElementChild;
+        
         switch (this.type) {
           case "ingredient":
             catalogue.ingredientsTags.push(tag);
@@ -36,6 +38,7 @@ class FilterBtn {
             break;
         }
         catalogue.tag();
+        catalogue.toggleFilterBtn(arrowBtn);
         new TagBtn(tag, this.type).render();
       });
     });
