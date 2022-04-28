@@ -217,6 +217,7 @@ class Catalogue {
           .sort()
       )
     );
+
     this.$ingredients.innerHTML = "";
     this.$ingredients.appendChild(
       new FilterBtn(this.ingredients, "ingredient").render()
