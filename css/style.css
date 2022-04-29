@@ -173,9 +173,14 @@ main {
   background: #ed6454;
 }
 
-/* SearchBtn */
+/* tagsFilterBtn */
 
-.search_btn-container {
+#tag_filter_btns_container {
+  position: absolute;
+  z-index: 1;
+}
+
+.tag_btns_container {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -222,13 +227,10 @@ main {
 }
 
 #ingredients-wrap {
-  /* width: auto;
-  height: auto; */
-  position: absolute;
   border-radius: 0 0 5px 5px;
 }
 
-.ingredient-list {
+.ingredient-list, .appliance-list, .ustensil-list {
   list-style: none;
   display: grid;
   grid-template-rows: repeat(44, 15px);
@@ -238,7 +240,7 @@ main {
   min-width: 181px;
 }
 
-.ingredient-list li {
+.ingredient-list li, .appliance-list li, .ustensil-list li {
   text-align: left;
   display: inline-block;
   width: 100%;
@@ -267,7 +269,12 @@ main {
   display: block;
 }
 
-/* Section */
+/* Recipes */
+
+section{
+  position:relative;
+  top:100px;
+}
 
 #recipes {
   display: flex;

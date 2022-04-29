@@ -37,32 +37,34 @@
             </div>
             <div id="tag-container">
             </div>
-            <ul class="search_btn-container">
-                <li id="ingredients">
-                    <div class="search-btn btn-ingredient">
-                        <input type="text" id="ingredient-filter-btn" placeholder="Ingredients">
-                        <button class="filter-btn"><i class="fa-solid fa-chevron-down"></i></button>
+            <div id="tag_filter_btns_container">
+                <div class="tag_btns_container">
+                    <div id="ingredients">
+                        <div class="search-btn btn-ingredient">
+                            <input type="text" id="ingredient-filter-btn" placeholder="Ingredients">
+                            <button class="filter-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <div id="ingredients-wrap" class="btn-ingredient list-hidden">
+                        </div>
                     </div>
-                    <div id="ingredients-wrap" class="btn-ingredient list-hidden">
+                    <div id="appliances">
+                        <div class="search-btn btn-appliance">
+                            <input type="text" id="appliance-filter-btn" placeholder="Appareils">
+                            <button class="filter-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <div id="appliances-wrap" class="btn-appliance list-hidden">
+                        </div>
                     </div>
-                <li>
-                <li>
-                    <div class="search-btn btn-appliance">
-                        <input type="text" id="appliance-filter-btn" placeholder="Appareils">
-                        <button class="filter-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                    <div id="ustensils">
+                        <div class="search-btn btn-ustensil">
+                            <input type="text" id="ustensil-filter-btn" placeholder="Ustensiles">
+                            <button class="filter-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <div id="ustensils-wrap" class="btn-ustensil list-hidden">
+                        </div>
                     </div>
-                    <div id="appliances-wrap" class="btn-appliance list-hidden">
-                    </div>
-                <li>
-                <li>
-                    <div class="search-btn btn-ustensil">
-                        <input type="text" id="ustensil-filter-btn" placeholder="Ustensiles">
-                        <button class="filter-btn"><i class="fa-solid fa-chevron-down"></i></button>
-                    </div>
-                    <div id="ustensils-wrap" class="btn-ustensil list-hidden">
-                    </div>
-                <li>
-            </ul>
+                </div>
+            </div>
             <section>
                 <ul id="recipes"></ul>
             </section>
