@@ -178,11 +178,12 @@ main {
 #tag_filter_btns_container {
   position: absolute;
   z-index: 1;
+  max-width: 1159px;
 }
 
 .tag_btns_container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 1rem;
   padding: 1rem 0;
   color: white;
@@ -231,13 +232,9 @@ main {
 }
 
 .ingredient-list, .appliance-list, .ustensil-list {
-  list-style: none;
-  display: grid;
-  grid-template-rows: repeat(44, 15px);
-  gap: 10px 80px;
-  grid-auto-flow: column;
-  padding: 1em;
-  min-width: 181px;
+  columns: 3 2em;
+  max-width: 800px;
+  padding:1em;
 }
 
 .ingredient-list li, .appliance-list li, .ustensil-list li {
@@ -273,12 +270,12 @@ main {
 
 section{
   position:relative;
-  top:100px;
+  top:125px;
 }
 
 #recipes {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 2.94rem;
 }
@@ -300,7 +297,7 @@ section{
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
 }
 
 .card_items-title {
