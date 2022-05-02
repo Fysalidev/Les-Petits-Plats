@@ -25,7 +25,7 @@ class Catalogue {
   }
 
   /* Init */
-  
+
   init = () => {
     this.searchBar();
     this.tagsFilterBtn();
@@ -42,7 +42,7 @@ class Catalogue {
         this.tag();
       } else {
         this.catalogueFiltred = this.catalogue;
-        this.tag(this.catalogueFiltred);
+        this.tag();
       }
     });
   };
@@ -70,19 +70,19 @@ class Catalogue {
 
     this.$tagsFilterBtn.forEach((tagsFilterBtn) => {
       const arrowBtn = tagsFilterBtn.lastElementChild.firstChild;
-      const input = tagsFilterBtn.firstElementChild
-      
+      const input = tagsFilterBtn.firstElementChild;
+
       arrowBtn.addEventListener("click", (e) => {
         this.toggleFilterBtn(e.target);
       });
 
       input.addEventListener("focus", (e) => {
-        const arrowBtn = e.target.nextElementSibling.firstElementChild
+        const arrowBtn = e.target.nextElementSibling.firstElementChild;
         this.toggleFilterBtn(arrowBtn);
       });
     });
 
-    /* Filter Ingredient List with InputBtn */
+    /* Filter Ingredients List with InputBtn */
 
     this.$ingredientSearchInput.addEventListener("keyup", (e) => {
       if (e.target.value.length > 0) {
@@ -102,7 +102,7 @@ class Catalogue {
       }
     });
 
-    /* Filter Appliance List with InputBtn */
+    /* Filter Appliances List with InputBtn */
 
     this.$applianceSearchInput.addEventListener("keyup", (e) => {
       if (e.target.value.length > 0) {
@@ -122,7 +122,7 @@ class Catalogue {
       }
     });
 
-    /* Filter Appliance List with InputBtn */
+    /* Filter Appliances List with InputBtn */
 
     this.$ustensilSearchInput.addEventListener("keyup", (e) => {
       if (e.target.value.length > 0) {
@@ -191,9 +191,9 @@ class Catalogue {
       });
     }
 
-    if(this.catalogueTaged.length > 0){
-      this.render()
-    }else{
+    if (this.catalogueTaged.length > 0) {
+      this.render();
+    } else {
       const alert = document.createElement("div");
       const p = document.createElement("p");
       alert.id = "alert";
@@ -218,6 +218,13 @@ class Catalogue {
           .sort()
       )
     );
+    /* Remove items taged from List */
+    if (this.ingredientsTags.length > 0) {
+      console.log(this.ingredientsTags);
+      this.ingredientsTags.forEach((tag) => {
+        this.ingredients.splice(this.ingredients.indexOf(tag.capitalize()), 1);
+      });
+    }
 
     this.$ingredients.innerHTML = "";
     this.$ingredients.appendChild(
@@ -228,6 +235,13 @@ class Catalogue {
     this.appliances = Array.from(
       new Set(this.catalogueTaged.map((recipe) => recipe.appliance).sort())
     );
+
+    /* Remove items taged from List */
+    if (this.appliancesTags.length > 0) {
+      this.appliancesTags.forEach((tag) => {
+        this.appliances.splice(this.appliances.indexOf(tag.capitalize()), 1);
+      });
+    }
 
     this.$appliances.innerHTML = "";
     this.$appliances.appendChild(
@@ -243,7 +257,13 @@ class Catalogue {
           .sort()
       )
     );
-
+    /* Remove items taged from List */
+    if (this.ustensilsTags.length > 0) {
+      this.ustensilsTags.forEach((tag) => {
+        this.ustensils.splice(this.ustensils.indexOf(tag.capitalize()), 1);
+      });
+    }
+    console.log(this.ustensils)
     this.$ustensils.innerHTML = "";
     this.$ustensils.appendChild(
       new FilterBtn(this.ustensils, "ustensil").render()

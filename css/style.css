@@ -239,8 +239,21 @@ main {
 
 .ingredient-list li, .appliance-list li, .ustensil-list li {
   text-align: left;
+  text-transform: lowercase;
   display: inline-block;
   width: 100%;
+}
+
+.ingredient-list li:first-letter{
+  text-transform: uppercase;
+}
+
+.appliance-list li:first-letter{
+  text-transform: uppercase;
+}
+
+.ustensil-list li:first-letter{
+  text-transform: uppercase;
 }
 
 #ingredient-filter-btn:focus::placeholder {
