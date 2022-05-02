@@ -25,6 +25,7 @@ class Catalogue {
   }
 
   /* Init */
+  
   init = () => {
     this.searchBar();
     this.tagsFilterBtn();
