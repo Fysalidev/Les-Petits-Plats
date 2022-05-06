@@ -220,7 +220,6 @@ class Catalogue {
     );
     /* Remove items taged from List */
     if (this.ingredientsTags.length > 0) {
-      console.log(this.ingredientsTags);
       this.ingredientsTags.forEach((tag) => {
         this.ingredients.splice(this.ingredients.indexOf(tag.capitalize()), 1);
       });
@@ -263,7 +262,6 @@ class Catalogue {
         this.ustensils.splice(this.ustensils.indexOf(tag.capitalize()), 1);
       });
     }
-    console.log(this.ustensils)
     this.$ustensils.innerHTML = "";
     this.$ustensils.appendChild(
       new FilterBtn(this.ustensils, "ustensil").render()
